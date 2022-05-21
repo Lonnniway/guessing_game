@@ -1,8 +1,21 @@
 import random
 import time
-
+"""
+Rating = []
+"""
 f = open('res.txt', 'r')
 Rating = [i for i in f]
+Temp = []
+for i in range(len(Rating)):
+    s = Rating[i]
+    Temp.append(int(s[7:8]))
+
+n = len(Temp)
+for i in range(0, n-1):
+    for j in range(n - 1):
+        if Temp[j] > Temp[j + 1]:
+            Temp[j], Temp[j + 1] = Temp[j + 1], Temp[j]
+            Rating[j], Rating[j + 1] = Rating[j + 1], Rating[j]
 
 def is_valid(a, key, Dip):
     if a == key:
@@ -47,5 +60,5 @@ while True:
     if case == '0':
         f = open('res.txt', 'w')
         for i in Rating:
-            f.write(i)
+            f.write(i + '\n')
         break
